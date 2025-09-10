@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <title>Marie Verdenal - Portfolio</title>
+</head>
+
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+   <div class="container">
+        <div class="HEADER">             
+               <!-- /// En tête /// -->
+                 <!-- /// menu top /// -->
+<div class="topnav">
+  <a href="#" class="logo">M.V.</a>
+  <div class="menu">
+        <a href="index.html">Retour à la page précédente</a>
+  </div>
+</div>
+              <!-- /// menu top /// -->
+            <!-- /// En tête /// -->
+    </div>
+</div>
+
+<img class="img" src="img/cv/cv.jpg" alt="Voir le CV de Marie Verdenal"></img>
+
+<div class="FOOTER">
+<!-- /// menu bottom /// -->
+    <div class="bottomnav">
+        <a target="_blank" href="https://www.safecreative.org/license/copyright">©Designed & Developed By Marie Verdenal, All Right Reserved.</a>
+       <!-- <a href="layout.html">Layout</a> -->
+            </div>
+</div>
+<div class="bgtopnav"></div>
+</div>
+
+<script>
+const frames = document.querySelectorAll('.hover-preview .square-frame');
+document.querySelectorAll('.hover-trigger').forEach(trigger=>{
+  const targetId = trigger.dataset.target;
+  if(!targetId) return;
+  const frame = document.getElementById(targetId);
+  
+  trigger.addEventListener('pointerenter', ()=> {
+    frames.forEach(f=>f.classList.remove('visible'));
+    if(frame) frame.classList.add('visible');
+  });
+  
+  trigger.addEventListener('pointerleave', ()=> {
+    if(frame) frame.classList.remove('visible');
+  });
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+@import url("breakpoints.css");
+@import url("reset.css");
+@import url("typo.css");
+@import url("menu.css");
+
+
+
+header {
+      position:fixed ;
+      width: 100%;
+      height: 100%;
+    }
+
+body {
+      font-family: "Pixtura", sans-serif;
+      font-size: 24px;
+    }
+
+.project {
+  margin: 5% 4% 0%;
+}
+.set {
+  margin: 0.6% 0% 0%;
+}
+
+/* cadre fixe à droite */
+.hover-preview {
+  position: fixed;
+  right: 15%;
+  top: 51%;
+  transform: translateY(-50%);
+  width: clamp(650px, 70vw, 650px);
+  aspect-ratio: 1 / 1; /* carré */
+  pointer-events: none; /* n'empêche pas le hover sur les triggers */
+  z-index: 999;
+}
+
+/* frames empilées dans le preview */
+.hover-preview .square-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.hover-preview .square-frame.visible { opacity: 1; }
+
+.hover-preview .square-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* style trigger */
+.hover-trigger {
+  user-select: none;      /* empêche la sélection */
+  -webkit-user-select: none; /* spécifique Safari/iOS */
+  cursor: pointer;
+  display: inline-block;  /* ça clarifie que c’est un élément interactif */
+}
+/* triggers doivent capter le hover */
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Safari iOS */
+  -ms-user-select: none;     /* vieux IE */
+}
+
+/* images simple */
+.img {
+  display: block;
+  margin-top: 2.5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  border: solid 2px #DDDDDD;
+}
