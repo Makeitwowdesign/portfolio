@@ -14,7 +14,7 @@ document.querySelectorAll('.hover-trigger').forEach(trigger => {
     if (frame) {
       frame.classList.add('visible');
       const v = frame.querySelector('video');
-      if (v) { v.currentTime = 0; v.play(); }
+      if (v) { v.currentTime = 0; v.play().catch(() => {}); }
     }
   });
 
