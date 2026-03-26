@@ -1,54 +1,35 @@
-const btn = document.querySelector(".btn-toggle");
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const frames = document.querySelectorAll('.hover-preview .square-frame');
 
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-} else if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
-}
-
-btn.addEventListener("click", function () {
-  if (prefersDarkScheme.matches) {
-    document.body.classList.toggle("light-theme");
-    var theme = document.body.classList.contains("light-theme")
-      ? "light"
-      : "dark";
-  } else {
-    document.body.classList.toggle("dark-theme");
-    var theme = document.body.classList.contains("dark-theme")
-      ? "dark"
-      : "light";
-  }
-  localStorage.setItem("theme", theme);
-});
-
-document.querySelectorAll(".hover-trigger").forEach(trigger => {
-  trigger.addEventListener("mouseenter", () => {
-    const targetId = trigger.dataset.img;
-    document.querySelectorAll(".hover-images img").forEach(img => {
-      img.style.opacity = img.id === targetId ? "1" : "0";
-    });
-  });
-
-  trigger.addEventListener("mouseleave", () => {
-    document.querySelectorAll(".hover-images img").forEach(img => {
-      img.style.opacity = "0";
-    });
-  });
-});
-
-<script>
-document.querySelectorAll('.hover-trigger').forEach(trigger=>{
+document.querySelectorAll('.hover-trigger').forEach(trigger => {
   const targetId = trigger.dataset.target;
-  if(!targetId) return;
+  if (!targetId) return;
   const frame = document.getElementById(targetId);
-  trigger.addEventListener('pointerenter', ()=> {
-    document.querySelectorAll('.hover-preview .square-frame').forEach(f=>f.classList.remove('visible'));
-    if(frame) frame.classList.add('visible');
+
+  trigger.addEventListener('pointerenter', () => {
+    frames.forEach(f => {
+      f.classList.remove('visible');
+      const v = f.querySelector('video');
+      if (v) v.pause();
+    });
+    if (frame) {
+      frame.classList.add('visible');
+      const v = frame.querySelector('video');
+      if (v) { v.currentTime = 0; v.play(); }
+    }
   });
-  trigger.addEventListener('pointerleave', ()=> {
-    if(frame) frame.classList.remove('visible'); // retire si tu veux cacher au leave
+
+  trigger.addEventListener('pointerleave', () => {
+    if (frame) {
+      frame.classList.remove('visible');
+      const v = frame.querySelector('video');
+      if (v) v.pause();
+    }
   });
 });
-</script>
+
+window.addEventListener("load", () => {
+  const accueil = document.getElementById("containeracceuil");
+  setTimeout(() => {
+    accueil.style.transform = "translateY(-100%)";
+  }, 1500);
+});

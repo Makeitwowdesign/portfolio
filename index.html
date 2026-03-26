@@ -326,13 +326,25 @@ document.querySelectorAll('.hover-trigger').forEach(trigger=>{
   if(!targetId) return;
   const frame = document.getElementById(targetId);
   
-  trigger.addEventListener('pointerenter', ()=> {
-    frames.forEach(f=>f.classList.remove('visible'));
-    if(frame) frame.classList.add('visible');
+trigger.addEventListener('pointerenter', ()=> {
+    frames.forEach(f=>{
+      f.classList.remove('visible');
+      const v = f.querySelector('video');
+      if(v) v.pause();
+    });
+    if(frame) {
+      frame.classList.add('visible');
+      const v = frame.querySelector('video');
+      if(v) { v.currentTime = 0; v.play(); }
+    }
   });
   
   trigger.addEventListener('pointerleave', ()=> {
-    if(frame) frame.classList.remove('visible');
+    if(frame) {
+      frame.classList.remove('visible');
+      const v = frame.querySelector('video');
+      if(v) v.pause();
+    }
   });
 });
 
