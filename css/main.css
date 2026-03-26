@@ -42,7 +42,9 @@ body {
   overflow: hidden;
   opacity: 0;
   transition: opacity .25s ease;
+  background-color: white;
 }
+
 .hover-preview .square-frame.visible { opacity: 1; }
 
 .hover-preview .square-frame img {
