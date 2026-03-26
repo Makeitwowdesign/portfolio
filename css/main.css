@@ -33,6 +33,7 @@ body {
   aspect-ratio: 1 / 1; /* carré */
   pointer-events: none; /* n'empêche pas le hover sur les triggers */
   z-index: 999;
+  background-color: white;
 }
 
 /* frames empilées dans le preview */
