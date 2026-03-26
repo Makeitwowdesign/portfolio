@@ -45,12 +45,20 @@ body {
 }
 .hover-preview .square-frame.visible { opacity: 1; }
 
-.hover-preview .square-frame img,
-.hover-preview .square-frame video {
+.hover-preview .square-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  display: block;
+}
+
+.hover-preview .square-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background-color: white;
   display: block;
 }
 
